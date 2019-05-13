@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jVectorMap demo</title>
+  <link rel="stylesheet" href="jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="jquery-jvectormap-world-mill.js"></script>
+</head>
+<body>
+  <div id="world-map" style="width: 600px; height: 400px"></div>
+
+  <script>
+
+var gdpData = {
+  "AF": 16.63,
+  "AL": 11.58,
+  "DZ": 158.97,
+  "RU": 15800.97,
+};
+
+//fce fce
+// zjisti jmeno prehravaneho souboru v kodi
+// pokud bude prezencni video - posli set Repeat
+
+$(function(){
+
+	// windows.setTimeOut
+	// volat fci fci
+
+	$('#world-map').vectorMap({
+	  map: 'world_mill',
+	  series: {
+	    regions: [{
+	      values: gdpData,
+	      scale: ['#C8EEFF', '#0071A4'],
+	      normalizeFunction: 'polynomial'
+	    }]
+	  },
+
+	  onRegionTipShow: function(e, el, code){
+	    el.html(el.html()+' (GDP - '+gdpData[code]+')');
+	  },
+
+	  onRegionClick: function(e, code){
+	  	      //method: "Playlist.Clear",
+		      //params: {playlistid:1}
+		      //doc: https://kodi.wiki/view/JSON-RPC_API/v9#Playlist.Add
+		  // clear, add nebo insert, open
+		  // opakovat
+		  //
+		  $.ajax({
+		    url: "http://127.0.0.1:8080/jsonrpc",
+         	    headers: {
+			    //'Authorization':'Basic xxxxxxxxxxxxx',
+			    //'X-CSRF-TOKEN':'xxxxxxxxxxxxxxxxxxxx',
+        		    //'Content-Type':'application/json'
+			    'Access-Control-Allow-Origin': '*'
+		    },
+		    type:"post",
+		    data: JSON.stringify({
+		      jsonrpc: "2.0",
+		      id: "1",
+		      method: "Playlist.Clear",
+		      params: {playlistid: 1}
+		    }),
+		    dataType:"json",
+		    contentType:"application/json; charset=utf-8",
+		    success: function(result){
+			console.log(result);
+			    console.log(code);
+
+			$.ajax({
+			    url: "http://127.0.0.1:8080/jsonrpc",
+			    type:"post",
+			    data: JSON.stringify({
+			      jsonrpc: "2.0",
+			      id: "1",
+			      method: "Playlist.Insert",
+				    params: {playlistid: 1, position: 0, item: {file: "/home/danielm/Videa/"+code+".avi"}}
+			    }),
+			    dataType:"json",
+			    contentType:"application/json; charset=utf-8",
+			    success: function(result){
+				console.log(result);
+
+				$.ajax({
+				    url: "http://127.0.0.1:8080/jsonrpc",
+				    type:"post",
+				    data: JSON.stringify({
+				      jsonrpc: "2.0",
+				      id: "1",
+				      method: "Player.Open",
+				      params: {item: {position: 0, playlistid: 1}, options: {}}
+				    }),
+				    dataType:"json",
+				    contentType:"application/json; charset=utf-8",
+				    success: function(result){
+					console.log(result);
+				    }
+				});
+			    }
+			});
+		    }
+		  });	  
+	  }
+	});
+});
+
+  </script>
+</body>
+</html>
