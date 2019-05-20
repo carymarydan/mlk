@@ -12,11 +12,78 @@
 
   <script>
 
-var gdpData = {
-  "AF": 16.63,
-  "AL": 11.58,
-  "DZ": 158.97,
-  "RU": 15800.97,
+var unima = {
+  "AF": 1, //afganistan
+	"RS": 1, //srbsko
+	"AE": 1, //arabske emiraty
+	"SE": 1, //svedsko
+	"AM": 1, //armenie
+	"AU": 1, //australie
+	"AZ": 1, //azerbajdzan
+	"BE": 1, //belgie
+	"TH": 1, //thajsko
+	"BJ": 1, //beninska rep.
+	"BO": 1, //bolivie
+	"BA": 1, //bosna herzegovina
+	"EC": 1, //ekvador
+	"DK": 1, //dansko
+	"QA": 1, //katar
+
+  "AL": 1, //albanie
+  "RU": 1, //rusko
+};
+
+var videjka = {
+	"DZ": 1, //alzirsko
+	"AR": 1, //argentina
+	"BY": 1, //belorusko
+	"BF": 1, //burkina faso
+	"BR": 1, //brazilie
+	"BG": 1, //bulharsko
+	"CR": 1, //costa rica
+	"CZ": 1, //ceska rep.
+	"CN": 1, //cina
+	"DO": 1, //dominikanska rep.
+	"EG": 1, //egypt
+	"EE": 1, //estonsko
+	"PH": 1, //filipiny
+	"FI": 1, //finsko
+	"GE": 1, //gruzie
+	"HR": 1, //chorvatsko
+	"ID": 1, //indonesie
+	"IR": 1, //iran
+	"IE": 1, //irsko
+	"IL": 1, //israel
+	"JP": 1, //japonsko
+	"KP": 1, //dem.rep.Korea
+	"KH": 1, //kambodza
+	"CA": 1, //kanada
+	"CU": 1, //kuba
+	"HU": 1, //madarsko
+	"MA": 1, //maroko
+	"DE": 1, //nemecko
+	"NI": 1, //nikaragua
+	"NL": 1, //holandsko
+	"NO": 1, //norsko
+	"PE": 1, //peru
+	"PL": 1, //polsko
+	"PT": 1, //portugalsko
+	"AT": 1, //rakousko
+	"RU": 1, //rusko
+	"GR": 1, //recko
+	"SP": 1, //singapore
+	"SI": 1, //slovinsko
+	"US1": 1, //georgia-atlanta - dodelat
+	"US2": 1, //connecticut
+	"US3": 1, //new york
+	"US4": 1, //severni karolina
+	"US5": 1, //colorado, denver
+	"US6": 1, //new jersey
+	"SY": 1, //syrie
+	"ES": 1, //spanelsko
+	"CH": 1, //svycarsko
+	"TR": 1, //turecko
+	"VN": 1, //vietnam
 };
 
 //fce fce
@@ -31,15 +98,22 @@ $(function(){
 	$('#world-map').vectorMap({
 	  map: 'world_mill',
 	  series: {
-	    regions: [{
-	      values: gdpData,
-	      scale: ['#C8EEFF', '#0071A4'],
-	      normalizeFunction: 'polynomial'
-	    }]
+	    regions: [
+	    {
+	      values: unima,
+	      scale: ['#ffcccc', '#ffaaaa'],
+	      normalizeFunction: 'linear'
+	    },
+	    {
+		    values: videjka,
+		    scale: ['#9999ff','#7777aa'],
+		    normalizeFunction: 'linear'	    
+	    }
+	    ]
 	  },
 
 	  onRegionTipShow: function(e, el, code){
-	    el.html(el.html()+' (GDP - '+gdpData[code]+')');
+	    el.html(el.html());
 	  },
 
 	  onRegionClick: function(e, code){
