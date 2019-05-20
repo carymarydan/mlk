@@ -8,17 +8,18 @@
   <script src="jquery-jvectormap-world-mill.js"></script>
 </head>
 <body>
-  <div id="world-map" style="width: 600px; height: 400px"></div>
+<center>
+  <div id="world-map" style="width: 1000px; height: 600px"></div>
 
   <script>
 
 var unima = {
-  "AF": 1, //afganistan
+  	"AF": 1, //afganistan
 	"RS": 1, //srbsko
 	"AE": 1, //arabske emiraty
 	"SE": 1, //svedsko
 	"AM": 1, //armenie
-	"AU": 1, //australie
+	//"AU": 1, //australie
 	"AZ": 1, //azerbajdzan
 	"BE": 1, //belgie
 	"TH": 1, //thajsko
@@ -28,12 +29,50 @@ var unima = {
 	"EC": 1, //ekvador
 	"DK": 1, //dansko
 	"QA": 1, //katar
-
-  "AL": 1, //albanie
-  "RU": 1, //rusko
+	"IN": 1, //india
+	"KZ": 1, //kazachstan
+	"KE": 1, //kena
+	"CO": 1, //kolumbie
+	"FR": 1, //francie
+	"NZ": 1, //novy zeland
+	"GN": 1, //guinea
+	"CL": 1, //chile
+	"NG": 1, //nigerie
+	"OM": 1, //oman
+	"IQ": 1, //irak
+	"IS": 1, //island
+	"IT": 1, //italie
+	"MX": 1, //mexiko
+	"MD": 1, //moldavsko
+	"YE": 1, //jemen
+	"ZA": 1, //jizni afrika
+	"PK": 1, //pakistan
+	"JO": 1, //jordansko
+	"CI": 1, //pobrezi slonoviny
+	"CM": 1, //kamerun
+	"CY": 1, //kypr
+	"LB": 1, //libanon
+	"LV": 1, //lotyssko
+	"LT": 1, //litva
+	"PS": 1, //palestina
+	"MY": 1, //malajsie
+	"ML": 1, //mali
+	"UA": 1, //ukrajina
+	"UY": 1, //urugvaj
+	"GB": 1, //britanie
+	"VE": 1, //venezuela
+	"SD": 1, //sudan
+	"RO": 1, //rumunsko
+	"TG": 1, //togo
+	"TN": 1, //tunisko
+	"SA": 1, //saudska arabie
+	"SN": 1, //senegal
+	"LK": 1, //sri lanka
+	"SK": 1, //slovensko
 };
 
 var videjka = {
+	"AU": 1, //australie
 	"DZ": 1, //alzirsko
 	"AR": 1, //argentina
 	"BY": 1, //belorusko
@@ -100,13 +139,13 @@ $(function(){
 	  series: {
 	    regions: [
 	    {
-	      values: unima,
-	      scale: ['#ffcccc', '#ffaaaa'],
+	      values: videjka,
+	      scale: ['#992b33'],
 	      normalizeFunction: 'linear'
 	    },
 	    {
-		    values: videjka,
-		    scale: ['#9999ff','#7777aa'],
+		    values: unima,
+		    scale: ['#ccd533'],
 		    normalizeFunction: 'linear'	    
 	    }
 	    ]
@@ -183,5 +222,6 @@ $(function(){
 });
 
   </script>
+</center>
 </body>
 </html>
