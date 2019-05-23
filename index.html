@@ -13,6 +13,7 @@
 
   <script>
 
+var cyprus = { "CY": 1,};
 var unima = {
   	"AF": 1, //afganistan
 	"RS": 1, //srbsko
@@ -50,7 +51,7 @@ var unima = {
 	"JO": 1, //jordansko
 	"CI": 1, //pobrezi slonoviny
 	"CM": 1, //kamerun
-	"CY": 1, //kypr
+	//"CY": 1, //kypr
 	"LB": 1, //libanon
 	"LV": 1, //lotyssko
 	"LT": 1, //litva
@@ -69,6 +70,8 @@ var unima = {
 	"SN": 1, //senegal
 	"LK": 1, //sri lanka
 	"SK": 1, //slovensko
+	"US": 1, //usa
+	"GL": 1, //gronsko
 };
 
 var videjka = {
@@ -94,7 +97,7 @@ var videjka = {
 	"IE": 1, //irsko
 	"IL": 1, //israel
 	"JP": 1, //japonsko
-	"KP": 1, //dem.rep.Korea
+	//"KP": 1, //dem.rep.Korea
 	"KH": 1, //kambodza
 	"CA": 1, //kanada
 	"CU": 1, //kuba
@@ -123,6 +126,7 @@ var videjka = {
 	"CH": 1, //svycarsko
 	"TR": 1, //turecko
 	"VN": 1, //vietnam
+	"KR": 1, //jizni korea
 };
 
 //fce fce
@@ -147,6 +151,12 @@ $(function(){
 		    values: unima,
 		    scale: ['#ccd533'],
 		    normalizeFunction: 'linear'	    
+	    },
+	    {
+		    values: cyprus,
+                    attribute: 'stroke',
+		    scale: ['#ccd533'],
+		    normalizeFunction: 'linear',
 	    }
 	    ]
 	  },
