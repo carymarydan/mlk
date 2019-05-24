@@ -129,7 +129,7 @@ var videjka = {
 	"KR": 1, //jizni korea
 };
 
-//fce fce
+// fce fce
 // zjisti jmeno prehravaneho souboru v kodi
 // pokud bude prezencni video - posli set Repeat
 
@@ -206,6 +206,43 @@ $(function(){
 			    contentType:"application/json; charset=utf-8",
 			    success: function(result){
 				console.log(result);
+
+var i;
+for (i = 1; i < 9; i++) {
+ 
+ 
+				$.ajax({
+				    url: "/jsonrpc",
+				    type:"post",
+				    data: JSON.stringify({
+				      jsonrpc: "2.0",
+				      id: "1",
+				      method: "Playlist.Insert",
+					    params: {playlistid: 1, position: i, item: {file: "/home/projektor/Videa/static.mp4"}}
+				    }),
+				    dataType:"json",
+				    contentType:"application/json; charset=utf-8",
+				    success: function(result){
+					    console.log(result);
+				    }
+				});
+		      }					    
+				//$.ajax({
+				//    url: "/jsonrpc",
+				//    type:"post",
+				//    data: JSON.stringify({
+				//      jsonrpc: "2.0",
+				//      id: "1",
+				//      method: "Player.setRepeat",
+				//	    params: {enums:"one"}
+				//    }),
+				//    dataType:"json",
+				//    contentType:"application/json; charset=utf-8",
+				//    success: function(result){
+				//	    console.log(result);
+				//    }
+				//});
+
 
 				$.ajax({
 				    url: "/jsonrpc",
